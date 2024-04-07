@@ -24,8 +24,8 @@
                 <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
             <Button fx:id="addWorkoutButton" onMouseClicked="#handleAddWorkoutButton" styleClass="button" text="Add Workout" />
-            <Button fx:id="displayWorkoutsButton" styleClass="button" text="Display Workouts" />
-            <Button fx:id="searchWorkoutButton" styleClass="button" text="Search Workout" />
+            <Button fx:id="displayWorkoutsButton" onMouseClicked="#handleDisplayWorkoutsButton" styleClass="button" text="Display Workouts" />
+            <Button fx:id="searchWorkoutButton" onMouseClicked="#handleSearchWorkoutButton" styleClass="button" text="Search Workout" />
         </VBox>
     </left>
     <center>

@@ -4,15 +4,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.stage.Stage?>
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demo3.fitnesstracker.AddWorkoutController" spacing="10">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demo3.fitnesstracker.AddWorkoutController" spacing="10" stylesheets="@style.css">
     <padding>
         <Insets top="10" right="10" bottom="10" left="10" />
     </padding>
     <Label text="Exercise Details" />
+    <Label text="Workout Date (YYYY-MM-DD)" />
+    <TextField fx:id="dateField" promptText="YYYY-MM-DD" />
+    <Label text="Name" />
+    <TextField fx:id="nameField" promptText="Exercise Name" />
+    <Label text="Sets" />
     <TextField fx:id="setsField" promptText="Sets" />
+    <Label text="Reps" />
     <TextField fx:id="repsField" promptText="Reps" />
-    <TextField fx:id="weightField" promptText="Weight" />
-    <TextField fx:id="timeField" promptText="Time" />
+    <Label text="Weight" />
+    <TextField fx:id="weightField" promptText="Weight (kg or lbs)" />
+    <Label text="Time" />
+    <TextField fx:id="timeField" promptText="Time (minutes)" />
     <Button text="Add Exercise to Workout" onAction="#handleAddExercise" />
     <Button text="Close" onAction="#handleClose" />
 </VBox>

@@ -59,6 +59,8 @@ public class HelloController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("addWorkout.fxml"));
             Parent root = fxmlLoader.load();
 
+            AddWorkoutController addWorkoutController = fxmlLoader.getController();
+            addWorkoutController.setData(data);
 
             Stage stage = new Stage();
             stage.setTitle("Add Workout");
@@ -92,7 +94,7 @@ public class HelloController {
     private void handleSearchWorkoutButton() {
         try {
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("searchWorkouts.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("searchWorkout.fxml"));
             Parent root = fxmlLoader.load();
 
 
