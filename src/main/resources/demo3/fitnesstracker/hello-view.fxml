@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demo3.fitnesstracker.HelloController" stylesheets="@style.css">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demo3.fitnesstracker.HelloController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
-            <Menu text="File" styleClass="menu">
-                <MenuItem fx:id="loadMenuItem" text="Load"/>
-                <MenuItem fx:id="saveMenuItem" text="Save"/>
+            <Menu styleClass="menu" text="File">
+                <MenuItem fx:id="loadMenuItem" text="Load" />
+                <MenuItem fx:id="saveMenuItem" text="Save" />
             </Menu>
         </MenuBar>
     </top>
     <left>
         <VBox alignment="CENTER_LEFT" spacing="20" BorderPane.alignment="CENTER">
             <padding>
-                <Insets top="15" right="15" bottom="15" left="15"/>
+                <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
-            <Button fx:id="addWorkoutButton" text="Add Workout" styleClass="button" />
-            <Button fx:id="displayWorkoutsButton" text="Display Workouts" styleClass="button" />
-            <Button fx:id="searchWorkoutButton" text="Search Workout" styleClass="button" />
+            <Button fx:id="addWorkoutButton" onMouseClicked="#handleAddWorkoutButton" styleClass="button" text="Add Workout" />
+            <Button fx:id="displayWorkoutsButton" styleClass="button" text="Display Workouts" />
+            <Button fx:id="searchWorkoutButton" styleClass="button" text="Search Workout" />
         </VBox>
     </left>
     <center>
-        <VBox fx:id="statsBox" spacing="20" alignment="CENTER" styleClass="stats-box">
+        <VBox fx:id="statsBox" alignment="CENTER" spacing="20" styleClass="stats-box">
             <padding>
-                <Insets top="15" right="15" bottom="15" left="15"/>
+                <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
-            <Label text="Stats:" styleClass="stats-header"/>
-            <Label fx:id="totalWorkoutsLabel" text="Total Workouts:"/>
-            <Label fx:id="totalExercisesLabel" text="Total Exercises:"/>
-            <Label fx:id="totalTimeSpentLabel" text="Total Time Spent:"/>
+            <Label styleClass="stats-header" text="Stats:" />
+            <Label fx:id="totalWorkoutsLabel" text="Total Workouts:" />
+            <Label fx:id="totalExercisesLabel" text="Total Exercises:" />
+            <Label fx:id="totalTimeSpentLabel" text="Total Time Spent:" />
         </VBox>
     </center>
 </BorderPane>
-
