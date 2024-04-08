@@ -15,6 +15,7 @@
             <Menu styleClass="menu" text="File">
                 <MenuItem fx:id="loadMenuItem" onAction="#handleLoadMenuItemAction" text="Load" />
                 <MenuItem fx:id="saveMenuItem" onAction="#handleSaveMenuItemAction" text="Save" />
+                <MenuItem fx:id="aboutMenuItem" onAction="#handleAbout" text="About" />
             </Menu>
         </MenuBar>
     </top>

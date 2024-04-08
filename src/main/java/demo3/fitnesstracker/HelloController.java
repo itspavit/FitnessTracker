@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 public class HelloController {
 
+
     @FXML
     private Button addWorkoutButton;
 
@@ -27,6 +28,9 @@ public class HelloController {
 
     @FXML
     private MenuItem saveMenuItem;
+
+    @FXML
+    private MenuItem aboutMenuItem;
 
     @FXML
     private Button searchWorkoutButton;
@@ -63,7 +67,7 @@ public class HelloController {
     private void handleLoadMenuItemAction() {
         try {
             ArrayList<Workout> loadedWorkouts = file.loadWorkouts();
-            data.setAllWorkouts(loadedWorkouts); // Assuming 'setAllWorkouts' sets the loaded workouts into 'data'
+            data.setAllWorkouts(loadedWorkouts);
             updateStats();
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,7 +93,6 @@ public class HelloController {
     }
 
     private int getTotalWorkouts() {
-        // Assuming data.workouts().getWorkouts() returns an ArrayList of all workouts
         return data.workouts().getWorkouts().size();
     }
 
@@ -122,11 +125,10 @@ public class HelloController {
             AddWorkoutController addWorkoutController = fxmlLoader.getController();
             addWorkoutController.setData(data);
 
-            // Set the callback for updating stats
             addWorkoutController.setStatsUpdateCallback(new AddWorkoutController.StatsUpdateCallback() {
                 @Override
                 public void updateStats() {
-                    HelloController.this.updateStats(); // Call the updateStats method in HelloController
+                    HelloController.this.updateStats();
                 }
             });
 
@@ -135,7 +137,7 @@ public class HelloController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
-            updateStats(); // Update stats after the Add Workout window is closed
+            updateStats();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -180,6 +182,21 @@ public class HelloController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleAbout() {
+        Alert aboutAlert = new Alert(Alert.AlertType.INFORMATION);
+        aboutAlert.setTitle("About Fitness Tracker");
+        aboutAlert.setHeaderText("Fitness Tracker Application");
+        aboutAlert.setContentText("Developed by:\n\n" +
+                "Daphne Choong - 30171153\n" +
+                "Pavitpal Singh Bhagat - 30177873\n" +
+                "Sourav Singh - 30230496\n\n" +
+                "Fitness Tracker helps you keep track of your workouts and exercises.\n\n" +
+                "Version: 1.0");
+
+        aboutAlert.showAndWait();
     }
 
     private void showAlert(String title, String message) {
