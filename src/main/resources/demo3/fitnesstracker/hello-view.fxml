@@ -13,8 +13,8 @@
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <Menu styleClass="menu" text="File">
-                <MenuItem fx:id="loadMenuItem" text="Load" />
-                <MenuItem fx:id="saveMenuItem" text="Save" />
+                <MenuItem fx:id="loadMenuItem" onAction="#handleLoadMenuItemAction" text="Load" />
+                <MenuItem fx:id="saveMenuItem" onAction="#handleSaveMenuItemAction" text="Save" />
             </Menu>
         </MenuBar>
     </top>

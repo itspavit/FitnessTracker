@@ -2,6 +2,7 @@ package demo3.fitnesstracker;
 
 import demo3.fitnesstracker.objects.Data;
 import demo3.fitnesstracker.objects.Exercise;
+import demo3.fitnesstracker.objects.FileIO;
 import demo3.fitnesstracker.objects.Workout;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
-
+import java.util.ArrayList;
 public class HelloController {
 
     @FXML
@@ -44,6 +45,8 @@ public class HelloController {
 
     private Data data;
 
+    private FileIO file;
+
     public HelloController() {
 
     }
@@ -51,8 +54,31 @@ public class HelloController {
     @FXML
     private void initialize() {
         data = new Data();
+        file = new FileIO();
         updateStats();
-        Font.loadFont(getClass().getResourceAsStream("/demo3.fitnesstracker/Satisfy-Regular.ttf"), 20);
+        Font.loadFont(getClass().getResourceAsStream("/demo3/fitnesstracker/Satisfy-Regular.ttf"), 20);
+    }
+
+    @FXML
+    private void handleLoadMenuItemAction() {
+        try {
+            ArrayList<Workout> loadedWorkouts = file.loadWorkouts();
+            data.setAllWorkouts(loadedWorkouts); // Assuming 'setAllWorkouts' sets the loaded workouts into 'data'
+            updateStats();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Load Error", "Failed to load workouts from file.");
+        }
+    }
+
+    @FXML
+    private void handleSaveMenuItemAction() {
+        try {
+            file.saveWorkouts(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Save Error", "Failed to save workouts to file.");
+        }
     }
 
 
@@ -156,7 +182,12 @@ public class HelloController {
         }
     }
 
-
-
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 }

@@ -20,7 +20,7 @@ public class Main {
         Data data = new Data();
 
         // Create an instance of FileIO and pass the Data instance to it
-        FileIO file = new FileIO(data);
+        FileIO file = new FileIO();
 
         // Create an instance of Menu and pass the Data and FileIO instances to it
         Menu menu = new Menu(data,file);

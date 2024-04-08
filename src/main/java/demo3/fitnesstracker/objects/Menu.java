@@ -59,7 +59,7 @@ public class Menu {
                     menuDisplayWorkoutByDate();
                     break;
                 case 4:
-                    file.saveWorkouts();
+                    file.saveWorkouts(data);
                     break;
                 case 5:
                     ArrayList<Workout> loadedWorkoutsFromFile = file.loadWorkouts();

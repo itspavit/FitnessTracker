@@ -13,15 +13,13 @@ public class FileIO{
     private static final int INDEX_OF_DATE = 0;
 
     //file path where data will be saved/loaded
-    private static final String fileName = "/home/itspavit/Desktop/CPSC 233/fitnesstracker/src/workouts.csv";
+    private static final String fileName = "/home/itspavit/Desktop/CPSC 233/FitnessTracker-GUI/src/main/resources/demo3/fitnesstracker/workouts.csv";
 
     /**
      * FileIO constructor
-     * @param data - the data object which will hold all the data related to the workouts
      */
-    public FileIO(Data data) {
-        //assigns the data object passed as parameter to the data object variable of the class
-        this.data = data;
+    public FileIO() {
+
     }
 
     /**
@@ -29,7 +27,7 @@ public class FileIO{
      * example of format - date,name,sets, reps, weight, time.... keeps on writing until there is no more workout
      * return type - void so returns nothing.
      */
-    public void saveWorkouts(){
+    public void saveWorkouts(Data data){
         try {
             //creating a BufferedWriter to write data into the workouts.csv file
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
