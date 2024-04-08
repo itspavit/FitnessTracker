@@ -175,19 +175,27 @@ public class HelloController {
     @FXML
     private void handleAddWorkoutButton() {
         try {
+            // Load the FXML file for the "Add Workout" UI
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("addWorkout.fxml"));
+            // Load the UI elements into a Parent object
             Parent root = fxmlLoader.load();
 
+            // Get the controller associated with the "Add Workout" UI
             AddWorkoutController addWorkoutController = fxmlLoader.getController();
+            // Pass the Data object to the AddWorkoutController so it can manipulate the data
             addWorkoutController.setData(data);
 
+            // Set a callback in AddWorkoutController to update the statistics in the HelloController
+            // after a new workout is added
             addWorkoutController.setStatsUpdateCallback(new AddWorkoutController.StatsUpdateCallback() {
                 @Override
                 public void updateStats() {
+                    // Call the updateStats method in HelloController to refresh the displayed stats
                     HelloController.this.updateStats();
                 }
             });
 
+            // Set a new stage for the "Add Workout UI"
             Stage stage = new Stage();
             stage.setTitle("Add Workout");
             stage.setMinHeight(1080);
@@ -195,24 +203,34 @@ public class HelloController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
+            // After the "Add Workout" window is closed, update the statistics on the main window
             updateStats();
 
         } catch (IOException e) {
+            // If an IOException occurs, print the stack trace for debugging
             e.printStackTrace();
         }
     }
 
 
+    /**
+     * Handles the action triggered by the "Display Workouts" button.
+     * This method initializes a new window to display all recorded workouts by loading
+     * the associated FXML file and setting the necessary controller.
+     */
     @FXML
     private void handleDisplayWorkoutsButton() {
         try {
-
+            // Load the FXML file for displaying workouts
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("displayWorkouts.fxml"));
+            // Load the view
             Parent root = fxmlLoader.load();
 
+            // Get the controller and pass the current data model to it
             DisplayWorkoutsController displayWorkoutsController = fxmlLoader.getController();
             displayWorkoutsController.setData(data);
 
+            // Create a new stage to display workouts and set its properties
             Stage stage = new Stage();
             stage.setTitle("Display Workouts");
             stage.setMinHeight(900);
@@ -221,19 +239,30 @@ public class HelloController {
             stage.show();
 
         } catch (IOException e) {
+            // If an IOException occurs, print the stack trace for debugging
             e.printStackTrace();
         }
     }
 
+
+    /**
+     * Handles the action triggered by the "Search Workout" button.
+     * This method opens a new window for searching workouts by loading the appropriate
+     * FXML file and setting up the controller with access to the current data model.
+     */
     @FXML
     private void handleSearchWorkoutButton() {
         try {
+            // Load the FXML file for searching workouts
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("searchWorkout.fxml"));
+            // Load the view
             Parent root = fxmlLoader.load();
 
+            // Get the controller and pass the current data model to it
             SearchWorkoutsController searchWorkoutsController = fxmlLoader.getController();
             searchWorkoutsController.setData(data);
 
+            // Create a new stage to search workouts and set its properties
             Stage stage = new Stage();
             stage.setTitle("Search Workout");
             stage.setMinHeight(900);
@@ -242,30 +271,52 @@ public class HelloController {
             stage.show();
 
         } catch (IOException e) {
+            // If an IOException occurs, print the stack trace for debugging
             e.printStackTrace();
         }
     }
 
+
+    /**
+     * Displays an informational alert about the Fitness Tracker application.
+     * This method constructs and shows an alert dialog with details about the Fitness Tracker application,
+     * including the developers' names and the application version.
+     */
     @FXML
     private void handleAbout() {
+        // Create a new alert of type INFORMATION
         Alert aboutAlert = new Alert(Alert.AlertType.INFORMATION);
+        // Set the title of the alert window
         aboutAlert.setTitle("About Fitness Tracker");
+        // Set the header text of the alert
         aboutAlert.setHeaderText("Fitness Tracker Application");
+        // Set the content text of the alert with developers' information and application version
         aboutAlert.setContentText("Developed by:\n\n" +
                 "Daphne Choong - 30171153\n" +
                 "Pavitpal Singh Bhagat - 30177873\n" +
                 "Sourav Singh - 30230496\n\n" +
                 "Fitness Tracker helps you keep track of your workouts and exercises.\n\n" +
                 "Version: 1.0");
-
+        // Display the alert and wait for the user to close it
         aboutAlert.showAndWait();
     }
 
+    /**
+     * Shows an alert dialog with a custom title and message.
+     * This utility method is used to display informational messages to the user.
+     * @param title   the title of the alert dialog
+     * @param message the message to be displayed inside the alert dialog
+     */
     private void showAlert(String title, String message) {
+        // Create a new alert of type INFORMATION
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        // Set the title of the alert
         alert.setTitle(title);
+        // The header is set to null to not display a header section in the alert dialog
         alert.setHeaderText(null);
+        // Set the content of the alert to the message passed as a parameter
         alert.setContentText(message);
+        // Display the alert and wait for the user to close it
         alert.showAndWait();
     }
 
