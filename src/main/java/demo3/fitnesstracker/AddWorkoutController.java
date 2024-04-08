@@ -27,6 +27,17 @@ public class AddWorkoutController {
         this.data = data;
     }
 
+    public interface StatsUpdateCallback {
+        void updateStats();
+    }
+
+    private StatsUpdateCallback statsUpdateCallback;
+
+    public void setStatsUpdateCallback(StatsUpdateCallback callback) {
+        this.statsUpdateCallback = callback;
+    }
+
+
     @FXML
     private void handleAddExercise() {
         String name = nameField.getText();
@@ -79,6 +90,9 @@ public class AddWorkoutController {
     @FXML
     private void handleClose() {
         Stage stage = (Stage) setsField.getScene().getWindow();
+        // Inside your AddWorkoutController after an exercise is successfully added
+
+
         stage.close();
     }
 }

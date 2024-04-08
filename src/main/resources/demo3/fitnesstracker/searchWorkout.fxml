@@ -3,13 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.stage.Stage?>
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demo3.fitnesstracker.SearchWorkoutsController" spacing="10" stylesheets="@style.css">
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demo3.fitnesstracker.SearchWorkoutsController" spacing="10" stylesheets="@style.css" styleClass="pop-up">
     <padding>
         <Insets top="10" right="10" bottom="10" left="10" />
     </padding>
-    <Label text="Add a Workout Date" />
+    <Label text="Enter Workout Date (YYYY-MM-DD)" />
     <TextField fx:id="dateField" promptText="YYYY-MM-DD" />
-    <Button text="Find Workout" onAction="#handleFindWorkout" />
-    <Button text="Close" onAction="#handleClose" />
+    <Button text="Search" onAction="#handleFindWorkout" styleClass="pop-up-buttons"/>
+    <TextArea fx:id="workoutDetailsArea" wrapText="true" editable="false" />
+    <Button text="Close" onAction="#handleClose" styleClass="pop-up-buttons"/>
 </VBox>

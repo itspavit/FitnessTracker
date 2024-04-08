@@ -1,5 +1,8 @@
 package demo3.fitnesstracker;
 
+import demo3.fitnesstracker.objects.Data;
+import demo3.fitnesstracker.objects.Exercise;
+import demo3.fitnesstracker.objects.Workout;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -11,25 +14,38 @@ public class DisplayWorkoutsController {
     @FXML
     private ListView<String> workoutsList;
 
-    @FXML
-    public void initialize() {
-        // Populate the ListView with workout data, you might need to call a method
-        // that returns the list of workouts and add them to the ListView.
-        // For example:
-        // workoutsList.getItems().addAll(getWorkouts());
+    private Data data; // Assuming Data class is accessible and contains all workouts
+
+    public void setData(Data data) {
+        this.data = data;
+        populateWorkoutsList();
     }
 
-    private List<String> getWorkouts() {
-        // Retrieve the list of workout descriptions
-        // This method should interact with your data model to retrieve the workouts
-        return new ArrayList<>();
+    private void populateWorkoutsList() {
+        List<String> workoutDescriptions = new ArrayList<>();
+        for (Workout workout : data.workouts().getWorkouts()) {
+            StringBuilder workoutInfo = new StringBuilder("Workout Date: " + workout.getDate() + "\n");
+            for (Exercise exercise : workout.getExercises()) {
+                workoutInfo.append("\tExercise Name: ").append(exercise.getName())
+                        .append(", Sets: ").append(exercise.getSets())
+                        .append(", Reps: ").append(exercise.getReps())
+                        .append(", Weight: ").append(exercise.getWeight()).append(" kg")
+                        .append(", Time: ").append(exercise.getTime()).append(" minutes\n");
+            }
+            workoutInfo.append("--------------------------------------------------\n");
+            workoutDescriptions.add(workoutInfo.toString());
+        }
+
+        if (workoutDescriptions.isEmpty()) {
+            workoutsList.getItems().add("No workouts have been added yet.");
+        } else {
+            workoutsList.getItems().addAll(workoutDescriptions);
+        }
     }
 
     @FXML
     private void handleClose() {
-        // Get the current stage and close it
         Stage stage = (Stage) workoutsList.getScene().getWindow();
         stage.close();
     }
 }
-

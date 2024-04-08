@@ -1,10 +1,12 @@
+
 .root {
-  -fx-font-family: 'Arial';
-  -fx-background-color: #6a0dad;
+  -fx-font-family: 'Satisfy';
+  -fx-font-size: 20px;
+  -fx-background-color: #AD7AD1;
 }
 
-..menu-bar {
-   -fx-background-color: #343a40;
+.menu-bar {
+   -fx-background-color: #edf5e1;
  }
 
  .menu {
@@ -18,12 +20,12 @@
 
 
 .button {
-  -fx-background-color: #00ffff;
+  -fx-background-color: #edf5e1;
   -fx-text-fill: #000000;
 }
 
 .button:hover {
-  -fx-background-color: #e0ffff;
+  -fx-background-color: #EBE4D4;
 }
 
 .label {
@@ -31,12 +33,12 @@
 }
 
 .vbox {
-  -fx-background-color: #f8f9fa;
+  -fx-background-color: #8ee4af;
   -fx-spacing: 10;
 }
 
 .stats-box {
-  -fx-background-color: #ffffff;
+  -fx-background-color: #FAA4E7;
   -fx-border-color: #dee2e6;
   -fx-border-width: 1;
   -fx-padding: 20;
@@ -45,4 +47,12 @@
 .stats-header {
   -fx-font-weight: bold;
   -fx-font-size: 16px;
+}
+
+.pop-up{
+    -fx-background-color: #fbc7ff;
+}
+
+.pop-up-buttons{
+    -fx-background-color: #edf5e1;
 }
