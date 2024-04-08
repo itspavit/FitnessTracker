@@ -1,7 +1,6 @@
-
 .root {
   -fx-font-family: 'Satisfy';
-  -fx-font-size: 20px;
+  -fx-font-size: 24px;
   -fx-font-weight: bold;
   -fx-background-color: #AD7AD1;
 }
@@ -47,7 +46,6 @@
 
 .stats-header {
   -fx-font-weight: bold;
-  -fx-font-size: 20px;
 }
 
 .pop-up{

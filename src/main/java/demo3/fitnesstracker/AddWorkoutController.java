@@ -2,7 +2,6 @@ package demo3.fitnesstracker;
 
 import demo3.fitnesstracker.objects.Data;
 import demo3.fitnesstracker.objects.Exercise;
-import demo3.fitnesstracker.objects.Workout;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;

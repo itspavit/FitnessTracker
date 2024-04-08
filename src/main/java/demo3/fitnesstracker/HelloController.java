@@ -69,6 +69,7 @@ public class HelloController {
             ArrayList<Workout> loadedWorkouts = file.loadWorkouts();
             data.setAllWorkouts(loadedWorkouts);
             updateStats();
+            showAlert("Successful:", "loaded data from workouts.csv file");
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Load Error", "Failed to load workouts from file.");
@@ -79,6 +80,7 @@ public class HelloController {
     private void handleSaveMenuItemAction() {
         try {
             file.saveWorkouts(data);
+            showAlert("Successful:", "saved data to workouts.csv file");
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Save Error", "Failed to save workouts to file.");
@@ -134,6 +136,8 @@ public class HelloController {
 
             Stage stage = new Stage();
             stage.setTitle("Add Workout");
+            stage.setMinHeight(1080);
+            stage.setMinWidth(900);
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
@@ -157,6 +161,8 @@ public class HelloController {
 
             Stage stage = new Stage();
             stage.setTitle("Display Workouts");
+            stage.setMinHeight(900);
+            stage.setMinWidth(900);
             stage.setScene(new Scene(root));
             stage.show();
 
@@ -176,6 +182,8 @@ public class HelloController {
 
             Stage stage = new Stage();
             stage.setTitle("Search Workout");
+            stage.setMinHeight(900);
+            stage.setMinWidth(900);
             stage.setScene(new Scene(root));
             stage.show();
 
