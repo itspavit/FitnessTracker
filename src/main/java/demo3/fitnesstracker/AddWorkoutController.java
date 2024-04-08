@@ -66,7 +66,7 @@ public class AddWorkoutController {
 
             showAlert("Success", "Exercise added to the workout!");
 
-            // Optionally clear the fields except for the date
+
             nameField.clear();
             setsField.clear();
             repsField.clear();
@@ -90,7 +90,7 @@ public class AddWorkoutController {
     @FXML
     private void handleClose() {
         Stage stage = (Stage) setsField.getScene().getWindow();
-        // Inside your AddWorkoutController after an exercise is successfully added
+
 
 
         stage.close();
