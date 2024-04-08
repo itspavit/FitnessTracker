@@ -12,6 +12,10 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class AddWorkoutController {
+
+    /**
+     * These private text fields are for user input
+     */
     @FXML private TextField dateField;
     @FXML private TextField nameField;
     @FXML private TextField setsField;
@@ -19,24 +23,39 @@ public class AddWorkoutController {
     @FXML private TextField weightField;
     @FXML private TextField timeField;
 
-    private Data data;
-    private String currentWorkoutDate; // Store the date for the current workout session
+    private Data data;  // Reference to the data class
+    private String currentWorkoutDate;  // Store the date for the current workout session
 
+
+    /**
+     * Setter method to set the Data object
+     * @param data The Data object to set.
+     */
     public void setData(Data data) {
         this.data = data;
     }
 
+    /**
+     * Callback to update statistics
+     */
     public interface StatsUpdateCallback {
         void updateStats();
     }
 
-    private StatsUpdateCallback statsUpdateCallback;
 
+    /**
+     * Setter method to set the StatsUpdateCallback
+     * @param callback The StatsUpdateCallback object to set.
+     */
+    private StatsUpdateCallback statsUpdateCallback;
     public void setStatsUpdateCallback(StatsUpdateCallback callback) {
         this.statsUpdateCallback = callback;
     }
 
 
+    /**
+     * Handles the addition of a new exercise.
+     */
     @FXML
     private void handleAddExercise() {
         String name = nameField.getText();
@@ -55,17 +74,20 @@ public class AddWorkoutController {
         }
 
         try {
+            // Parsing the values from the TextFields
             int sets = Integer.parseInt(setsField.getText());
             int reps = Integer.parseInt(repsField.getText());
             float weight = Float.parseFloat(weightField.getText());
             int time = Integer.parseInt(timeField.getText());
 
+            // Creating a new Exercise object
             Exercise exercise = new Exercise(name, sets, reps, weight, time);
+            // Adding the exercise to the workout
             data.addExerciseToWorkout(currentWorkoutDate, exercise);
 
             showAlert("Success", "Exercise added to the workout!");
 
-
+            // Clearing the TextFields after adding the exercise
             nameField.clear();
             setsField.clear();
             repsField.clear();
@@ -77,21 +99,28 @@ public class AddWorkoutController {
         }
     }
 
-    // Method to show alerts
+    /**
+     * Displays an alert with the provided title and message.
+     * @param title   The title of the alert.
+     * @param message The message content of the alert.
+     */
     private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);  // Create a new information alert
+        alert.setTitle(title);  // Set the title of the alert
+        alert.setHeaderText(null);  // Set the header text to null
+        alert.setContentText(message);  // Set the content text of the alert
+        alert.showAndWait();  // Display the alert and wait for user interaction
     }
 
+
+    /**
+     * Closes the current JavaFX stage.
+     */
     @FXML
     private void handleClose() {
+        // Retrieve the current stage from the setsField
         Stage stage = (Stage) setsField.getScene().getWindow();
-
-
-
+        // Close the stage
         stage.close();
     }
 }
