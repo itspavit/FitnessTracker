@@ -22,7 +22,7 @@ public class Main {
         // Create an instance of FileIO and pass the Data instance to it
         FileIO file = new FileIO();
 
-        // Create an instance of Menu and pass the Data and FileIO instances to it
+            // Create an instance of Menu and pass the Data and FileIO instances to it
         Menu menu = new Menu(data,file);
 
         // Call the instance method menuLoop on the Menu instance
